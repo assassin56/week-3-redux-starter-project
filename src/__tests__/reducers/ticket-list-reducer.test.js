@@ -1,4 +1,4 @@
-import ticketListReducer from "../../reducers/ticket-list-reducer";
+import ticketListReducer from '../../reducers/ticket-list-reducer';
 
 let action;
 //declare an action but don't define it. Each test will define what the action should be
@@ -90,6 +90,8 @@ describe("ticketListReducer", () => {
   });
 
   test("Should return default state if there is no action type passed into the reducer", () => {
+    // export default (state = {}, action) => {
+    // };
     expect(ticketListReducer({}, { type: null })).toEqual({});
   });
 });
