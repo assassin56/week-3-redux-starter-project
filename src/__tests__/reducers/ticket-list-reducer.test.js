@@ -6,7 +6,8 @@ const ticketData = {
   names: "Ryan & Aimen",
   location: "4b",
   issue: "Redux action is not working correctly.",
-  id: 1,
+  timeOpen: 0, 
+  id: 1
 };
 
 //to demonstrate that if a key of an object already exists, it will update.
@@ -94,6 +95,26 @@ describe("ticketListReducer", () => {
     // };
     expect(ticketListReducer({}, { type: null })).toEqual({});
   });
+
+  test('should add a formatted wait time to ticket entry', () =>{
+    const { names, location, issue, timeOpen, id } = ticketData;
+    action = {
+      type: currentState.UPDATE_TIME,
+      formattedWaitTime: '4 minutes',
+      id: id
+    };
+    expect(ticketListReducer({ [id] : ticketData }, action)).toEqual({
+      [id]: {
+        names: names,
+        location: location,
+        issue: issue,
+        timeOpen: timeOpen,
+        id: id,
+        formattedWaitTime: '4 minutes'
+      }
+    });
+  });
+
 });
 
 // expect(ticketListReducer({}, {type: null})).toEqual({});
