@@ -2,7 +2,7 @@ import * as c from './../actions/ActionTypes';
 
 export default (state = {}, action) => {
 
-  const { names, location, issue, id, formattedTime, timeOpen } = action;
+  const { names, location, issue, id, formattedWaitTime, timeOpen } = action;
 
   switch (action.type) {
     case c.ADD_TICKET:
@@ -12,6 +12,8 @@ export default (state = {}, action) => {
           location: location,
           issue: issue,
           id: id,
+          timeOpen: timeOpen,
+          formattedWaitTime: formattedWaitTime
         },
       });
 

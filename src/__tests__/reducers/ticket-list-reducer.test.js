@@ -1,4 +1,6 @@
 import ticketListReducer from '../../reducers/ticket-list-reducer';
+import * as c from './../../actions/ActionTypes';
+import Moment from 'moment';
 
 let action;
 //declare an action but don't define it. Each test will define what the action should be
@@ -35,14 +37,16 @@ const currentState = {
 };
 
 describe("ticketListReducer", () => {
-  test("Should successfully add new ticket data to masterTicketList", () => {
-    const { names, location, issue, id } = ticketData;
+  test("Should successfully add a ticket to the ticket list that includes Moment-formatted times", () => {
+    const { names, location, issue, timeOpen, id } = ticketData;
     action = {
       type: "ADD_TICKET",
       names: names,
       location: location,
       issue: issue,
+      timeOpen: timeOpen,
       id: id,
+      formattedWaitTime: new Moment().fromNow(true)
     };
 
     expect(ticketListReducer({}, action)).toEqual({
@@ -50,7 +54,9 @@ describe("ticketListReducer", () => {
         names: names,
         location: location,
         issue: issue,
+        timeOpen: timeOpen,
         id: id,
+        formattedWaitTime: 'a few seconds'
       },
     });
   });
@@ -99,7 +105,7 @@ describe("ticketListReducer", () => {
   test('should add a formatted wait time to ticket entry', () =>{
     const { names, location, issue, timeOpen, id } = ticketData;
     action = {
-      type: currentState.UPDATE_TIME,
+      type: c.UPDATE_TIME,
       formattedWaitTime: '4 minutes',
       id: id
     };
