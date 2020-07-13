@@ -12,7 +12,9 @@ function App() {
         <Route path = "/signin">
           <Signin />
         </Route>
-        <Route path = "/"></Route>
+        <Route path = "/">
+          <TicketControl />
+        </Route>
       </Switch>
     </Router>
   );
