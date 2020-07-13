@@ -37,17 +37,17 @@ const currentState = {
 };
 
 describe("ticketListReducer", () => {
-  test("Should successfully add a ticket to the ticket list that includes Moment-formatted times", () => {
-    const { names, location, issue, timeOpen, id } = ticketData;
-    action = {
-      type: "ADD_TICKET",
-      names: names,
-      location: location,
-      issue: issue,
-      timeOpen: timeOpen,
-      id: id,
-      formattedWaitTime: new Moment().fromNow(true)
-    };
+  // test("Should successfully add a ticket to the ticket list that includes Moment-formatted times", () => {
+  //   const { names, location, issue, timeOpen, id } = ticketData;
+  //   action = {
+  //     type: "ADD_TICKET",
+  //     names: names,
+  //     location: location,
+  //     issue: issue,
+  //     timeOpen: timeOpen,
+  //     id: id,
+  //     formattedWaitTime: new Moment().fromNow(true)
+  //   };
 
     expect(ticketListReducer({}, action)).toEqual({
       1: {
@@ -62,14 +62,14 @@ describe("ticketListReducer", () => {
   });
 
   test("Should update ticket data if key already exists using the same ADD_TICKET Reducer", () => {
-    const { names, location, issue, id } = updatedTicketData;
-    action = {
-      type: "ADD_TICKET",
-      names: names,
-      location: location,
-      issue: issue,
-      id: id,
-    };
+    // const { names, location, issue, id } = updatedTicketData;
+    // action = {
+    //   type: "ADD_TICKET",
+    //   names: names,
+    //   location: location,
+    //   issue: issue,
+    //   id: id,
+    // };
 
     expect(ticketListReducer({}, action)).toEqual({
       [id]: {
